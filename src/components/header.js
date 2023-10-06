@@ -5,7 +5,7 @@ import { DarkModeSwitch } from './darkmodeswitch'
 export default function Header() {
   return (
     <header
-    className="bg-white dark:bg-darkBlue shadow-md"
+    className="bg-white dark:bg-darkBlue shadow-md sticky top-0 z-50"
     >
       <div
       className='flex mx-4 lg:max-w-6xl lg:mx-auto items-center justify-between py-5'

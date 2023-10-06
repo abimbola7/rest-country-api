@@ -10,7 +10,7 @@ const Card = ({ countries }) => {
     className='dark:bg-darkBlue bg-white rounded-b-md shadow-md rounded-md transition-transform duration-300 hover:scale-105'
     >
       <Link
-      href={`/country/${countries.name.common}`}
+      href={`/country/${(countries.cioc || countries.cca2 || countries.cca3).toLowerCase()}`}
       className=""
       >
       <div
@@ -34,9 +34,9 @@ const Card = ({ countries }) => {
       <div
       className='text-sm'
       >
-        <p className='font-semibold'>Population: <span className='font-light'>{  countries.population }</span></p>
+        <p className='font-semibold'>Population: <span className='font-light'>{  countries.population.toLocaleString() }</span></p>
         <p className='font-semibold'>Region: <span className='font-light'>{  countries.region }</span></p>
-        <p className='font-semibold'>Capital: <span className='font-light'>{  countries.capital }</span></p>
+        <p className='font-semibold'>Capital: {  countries.capital ? <span className='font-light'>{countries.capital.join(', ')}</span>: <span>Nil</span> }</p>
         
       </div>
       </div>
