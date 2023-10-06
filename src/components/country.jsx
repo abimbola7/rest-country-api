@@ -13,8 +13,7 @@ export default function Country({ country }) {
 
   const handleBorder = (e) => {
     const border = e.target.textContent;
-    // console.log(border)
-    router.push(`/country/${border}`)
+    router.push(`/country/${border.toLowerCase()}`)
   }
   useEffect(() => {
     for (const key in country.name.nativeName) {
