@@ -2,13 +2,20 @@
 
 import Image from 'next/image'
 import Link from "next/Link"
+import { useRouter } from 'next/navigation'
 import React, { useEffect } from 'react'
 
 export default function Country({ country }) {
   const [ nativeName, setNativeName ] = React.useState('')
   const [ currency, setCurrency ] = React.useState('')
   const [ language, setLanguage ] = React.useState([])
+  const router = useRouter()
 
+  const handleBorder = (e) => {
+    const border = e.target.textContent;
+    // console.log(border)
+    router.push(`/country/${border}`)
+  }
   useEffect(() => {
     for (const key in country.name.nativeName) {
       const element = country.name.nativeName[key];
@@ -83,7 +90,22 @@ export default function Country({ country }) {
           <span>{!language.length <= 0 ? language.join(", ") : 'Nil'}</span>
         </div>
        </div>
-       </div>
+       <div
+      className='w-full flex flex-col md:flex-row md:space-x-16 space-y-2 md:space-y-0 mt-5 md:items-center justify-center md:justify-start'
+      >
+      <h2 className='font-semibold'>Border Countries:</h2>
+      <div
+      className='flex flex-wrap gap-x-2 gap-y-2'
+      >
+        {
+          country.borders && country.borders.length > 0 ? country.borders.map(border=>(
+            <button onClick={handleBorder} 
+            key={border} className="py-1 px-3 bg-darkBlue rounded-sm text-sm mt-2 text-white">{border}</button>
+          )) : <span>Nil</span> 
+        }
+      </div>
+      </div>
+      </div>
     </div>
   )
 }
