@@ -17,7 +17,7 @@ const Searchbox = (props) => {
   return (
     <form
     onSubmit={searchHandler}
-    className="relative mt-10 w-80 rounded-sm shadow-md focus:border-none"
+    className="relative mt-10 rounded-sm shadow-md focus:border-none max-w-[90%] w-[30rem]"
     >
     <AiOutlineSearch
     className='absolute top-4 left-2 text-lg'
@@ -26,7 +26,7 @@ const Searchbox = (props) => {
     onChange={(e)=>setSearch(e.target.value)}
     type="text "
     value={search}
-    className='pl-8 py-3 flex-grow w-full dark:bg-darkBlue bg-white focus:outline-none outline-none'
+    className='pl-8 py-3 flex-grow dark:bg-darkBlue bg-white focus:outline-none outline-none w-full'
     />
     </form>
   )

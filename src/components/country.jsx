@@ -39,6 +39,8 @@ export default function Country({ country }) {
       alt={country.flags.alt}
       width={1000}
       height={500}
+      placeholder='blur'
+      blurDataURL='/spinner.svg'
       style={
         {
           maxWidth : '100%',

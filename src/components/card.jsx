@@ -7,7 +7,7 @@ import React from 'react'
 const Card = ({ countries }) => {
   return (
     <div
-    className='dark:bg-darkBlue bg-white rounded-b-md shadow-md rounded-md transition-transform duration-300 hover:scale-105'
+    className='transition-transform duration-300 bg-white rounded-md shadow-md dark:bg-darkBlue rounded-b-md hover:scale-105'
     >
       <Link
       href={`/country/${(countries.cioc || countries.cca2 || countries.cca3).toLowerCase()}`}
@@ -22,13 +22,15 @@ const Card = ({ countries }) => {
         width={260}
         height={150}
         className="h-full rounded-t-md"
+        placeholder='blur'
+        blurDataURL='/spinner.svg'
         />
       </div>
       <div
-      className='px-3 space-y-3 pt-3 pb-8'
+      className='px-3 pt-3 pb-8 space-y-3'
       >
       <h2
-      className='font-bold text-sm'
+      className='text-sm font-bold'
       >
       { countries.name.common }</h2>
       <div
