@@ -2,8 +2,10 @@
 
 import Image from 'next/image'
 import React, { useEffect } from 'react'
+import { useRouter } from "next/navigation"
 
 export default function Country({ country }) {
+  const router = useRouter()
   const [ nativeName, setNativeName ] = React.useState('')
   const [ currency, setCurrency ] = React.useState('')
   const [ language, setLanguage ] = React.useState([])
