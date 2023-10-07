@@ -1,16 +1,12 @@
 "use client"
 
 import Image from 'next/image'
-import Link from "next/Link"
-import { useSearchParams } from 'next/navigation'
 import React, { useEffect } from 'react'
 
 export default function Country({ country }) {
   const [ nativeName, setNativeName ] = React.useState('')
   const [ currency, setCurrency ] = React.useState('')
   const [ language, setLanguage ] = React.useState([])
-  const searchParams = useSearchParams()
-  console.log(searchParams.get("country"))
   const handleBorder = (e) => {
     const border = e.target.textContent;
     router.push(`/country/${border.toLowerCase()}`)
@@ -32,7 +28,7 @@ export default function Country({ country }) {
 
   return (
     <div
-     className='p-3 flex flex-col md:flex-row md:space-x-16  mx-auto items-center justify-center gap-x-4 space-y-10 md:space-y-0'
+     className='p-2.5 sm:p-3 flex flex-col md:flex-row md:space-x-16  mx-auto items-center justify-center gap-x-4 space-y-10 md:space-y-0'
     >
       <Image
       src={country.flags.png}
@@ -53,7 +49,7 @@ export default function Country({ country }) {
        className="w-full"
        >
        <h1
-       className="font-bold text-3xl mb-8"
+       className="font-bold text-2xl sm:text-3xl mb-8"
        >{country.name.common}</h1>
        <div className="grid grid-cols-1 md:grid-cols-2 text-sm gap-x-3">
         <div className="py-2 text-sm">

@@ -5,10 +5,6 @@ import { useRouter  } from "next/navigation";
 
 export default function Error({ error, reset }) {
   const router = useRouter()
-  useEffect(() => {
-    console.log(error)
-  }, [error])
-  
   return (
     <div
     className="text-center mt-10 flex flex-col items-center"

@@ -9,7 +9,6 @@ export default async function SearchPage({ searchParams }) {
     throw new Error("Cannot fetch data")
   }
   const data =  await res.json();
-  console.log(data)
   return (
     <>
       {

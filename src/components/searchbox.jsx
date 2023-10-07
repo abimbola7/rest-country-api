@@ -10,7 +10,6 @@ const Searchbox = (props) => {
   const [ search, setSearch ] = React.useState("")
   const searchHandler = (e) => {
     e.preventDefault();
-    console.log(search)
     router.push(`/search?search=${search}`)
     
   }

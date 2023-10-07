@@ -9,7 +9,6 @@ export default async function CountryPage({ params, searchParams}) {
     throw new Error("Cannot fetch data")
   }
   const data = await res.json();
-  console.log(data)
   if ( data.length  === 1 ){
     countryObj = data[0]
   }

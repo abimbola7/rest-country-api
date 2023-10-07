@@ -11,7 +11,6 @@ import React, { useState, useEffect } from 'react'
 export const DarkModeSwitch = () => {
   const { systemTheme ,theme , setTheme }  = useTheme();
   const [ mounted, setMounted ] = useState(false);
-  console.log(systemTheme, theme)
 
   useEffect(() => {
     setMounted(true);
