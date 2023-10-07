@@ -31,7 +31,7 @@ Users should be able to:
 ### Screenshot
 
 ![desktop](./design/desktop-main.png)
-![desktop](./design/mobile-details.png)
+![desktop](./design/desktop-details.png)
 ![mobile](./design/mobile-main.png)
 ![mobile](./design/mobile-details.png)
 
