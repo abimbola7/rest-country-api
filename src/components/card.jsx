@@ -11,7 +11,7 @@ const Card = ({ countries }) => {
     >
       <Link
       href={`/country/${(countries.cioc || countries.cca2 || countries.cca3).toLowerCase()}`}
-      className=""
+      query={{ country: countries }}
       >
       <div
        className="h-36"

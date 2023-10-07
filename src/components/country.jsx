@@ -2,15 +2,15 @@
 
 import Image from 'next/image'
 import Link from "next/Link"
-import { useRouter } from 'next/navigation'
+import { useSearchParams } from 'next/navigation'
 import React, { useEffect } from 'react'
 
 export default function Country({ country }) {
   const [ nativeName, setNativeName ] = React.useState('')
   const [ currency, setCurrency ] = React.useState('')
   const [ language, setLanguage ] = React.useState([])
-  const router = useRouter()
-
+  const searchParams = useSearchParams()
+  console.log(searchParams.get("country"))
   const handleBorder = (e) => {
     const border = e.target.textContent;
     router.push(`/country/${border.toLowerCase()}`)
