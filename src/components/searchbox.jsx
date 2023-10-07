@@ -22,6 +22,7 @@ const Searchbox = (props) => {
     className='absolute top-4 left-2 text-lg'
      />
     <input 
+    placeholder='Search for a country...'
     onChange={(e)=>setSearch(e.target.value)}
     type="text "
     value={search}
