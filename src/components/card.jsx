@@ -10,8 +10,12 @@ const Card = ({ countries }) => {
     className='transition-transform duration-300 bg-white rounded-md shadow-md dark:bg-darkBlue rounded-b-md hover:scale-105'
     >
       <Link
-      href={`/country/${(countries.cioc || countries.cca2 || countries.cca3).toLowerCase()}`}
-      query={{ country: countries }}
+      href={{
+        pathname  :`/country/${(countries.cioc || countries.cca2 || countries.cca3).toLowerCase()}`,
+        query : {
+          borders : countries.borders
+        }
+        }}
       >
       <div
        className="h-36"

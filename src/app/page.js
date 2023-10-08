@@ -3,7 +3,7 @@ import Image from 'next/image'
 import { Fragment } from 'react';
 
 export default async function Home() {
-  await new Promise(resolve=>setTimeout(resolve, 6000));
+  await new Promise(resolve=>setTimeout(resolve, 2500));
   const res = await fetch(`https://restcountries.com/v3.1/all`, { next: { revalidate: 10000 } })
   if (!res.ok) {
     throw new Error("Cannot fetch data")

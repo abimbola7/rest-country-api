@@ -6,14 +6,27 @@ import { useRouter } from "next/navigation"
 
 export default function Country({ country }) {
   const router = useRouter()
-  const [ nativeName, setNativeName ] = React.useState('')
+  let name = []
+  const [ nativeName, setNativeName ] = React.useState([])
+  const [ countries, setCountries ] = React.useState([])
   const [ currency, setCurrency ] = React.useState('')
   const [ language, setLanguage ] = React.useState([])
   const handleBorder = (e) => {
-    const border = e.target.textContent;
+    const border = e
     router.push(`/country/${border.toLowerCase()}`)
   }
+
+
   useEffect(() => {
+    fetch(`https://restcountries.com/v3.1/all`)
+    .then(res=>res.json())
+    .then(data=>{
+      setCountries(data)
+    })
+  }, [])
+
+  useEffect(() => {
+
     for (const key in country.name.nativeName) {
       const element = country.name.nativeName[key];
       setNativeName(element.official)
@@ -28,10 +41,22 @@ export default function Country({ country }) {
     )
   }, [country.name.nativeName, country.languages, country.currencies])
 
+  country?.borders.forEach((elem)=>{
+    if (countries && countries.length > 0){
+      let borders = countries.find(count=>count.cca3 === elem)
+      name.push({
+        borders : borders.name.common,
+        ccas3 : borders.cca3
+      })
+    }
+  })
+
   return (
     <>
       <button
-      onClick={()=>router.push('/')}
+      onClick={()=>{
+        router.push('/');
+        }}
       className='py-2 px-4 dark:bg-darkBlue bg-white shadow-md rounded-md text-sm font-semibold my-10'
       >
         Go Back
@@ -103,12 +128,19 @@ export default function Country({ country }) {
         <div
         className='flex flex-wrap gap-x-2 gap-y-2'
         >
-          {
+          {/* {
             country.borders && country.borders.length > 0 ? country.borders.map(border=>(
               <button onClick={handleBorder} 
               key={border} className="py-1 px-3 bg-darkBlue rounded-sm text-sm mt-2 text-white">{border}</button>
             )) : <span>Nil</span> 
-          }
+          } */}
+         {
+            name && name.length > 0 ? name.map(border=>(
+              <button key={border.cca3} onClick={()=>handleBorder(border.ccas3)}>
+                <span className="py-1 px-3 bg-darkBlue rounded-sm text-sm mt-2 text-white">{border.borders}</span>
+              </button>
+            )): <span>Nil</span>
+         } 
         </div>
         </div>
         </div>
