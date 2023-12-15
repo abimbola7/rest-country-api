@@ -41,7 +41,7 @@ export default function Country({ country }) {
     )
   }, [country.name.nativeName, country.languages, country.currencies])
 
-  country?.borders.forEach((elem)=>{
+  country.borders && country?.borders.forEach((elem)=>{
     if (countries && countries.length > 0){
       let borders = countries.find(count=>count.cca3 === elem)
       name.push({
@@ -55,16 +55,17 @@ export default function Country({ country }) {
     <>
       <button
       onClick={()=>{
-        router.push('/');
+        router.push('../');
         }}
-      className='py-2 px-4 dark:bg-darkBlue bg-white shadow-md rounded-md text-sm font-semibold my-10'
+      className='px-4 py-2 my-10 text-sm font-semibold bg-white rounded-md shadow-md dark:bg-darkBlue'
       >
-        Go Back
+        Back
       </button>
       <div
       className='p-2.5 sm:p-3 flex flex-col md:flex-row md:space-x-16  mx-auto items-center justify-center gap-x-4 space-y-10 md:space-y-0'
       >
         <Image
+        quality={100}
         src={country.flags.png}
         alt={country.flags.alt}
         width={1000}
@@ -83,9 +84,9 @@ export default function Country({ country }) {
         className="w-full"
         >
         <h1
-        className="font-bold text-2xl sm:text-3xl mb-8"
+        className="mb-8 text-2xl font-bold sm:text-3xl"
         >{country.name.common}</h1>
-        <div className="grid grid-cols-1 md:grid-cols-2 text-sm gap-x-3">
+        <div className="grid grid-cols-1 text-sm md:grid-cols-2 gap-x-3">
           <div className="py-2 text-sm">
             <span className='font-semibold'>Native name:{' '}</span>
             <span>{ nativeName ? `${nativeName}`: 'Nil' }</span>
@@ -122,7 +123,7 @@ export default function Country({ country }) {
           </div>
         </div>
         <div
-        className='w-full flex flex-col md:flex-row md:space-x-16 space-y-2 md:space-y-0 mt-5 md:items-center justify-center md:justify-start'
+        className='flex flex-col justify-center w-full mt-5 space-y-2 md:flex-row md:space-x-16 md:space-y-0 md:items-center md:justify-start'
         >
         <h2 className='font-semibold'>Border Countries:</h2>
         <div
@@ -131,13 +132,13 @@ export default function Country({ country }) {
           {/* {
             country.borders && country.borders.length > 0 ? country.borders.map(border=>(
               <button onClick={handleBorder} 
-              key={border} className="py-1 px-3 bg-darkBlue rounded-sm text-sm mt-2 text-white">{border}</button>
+              key={border} className="px-3 py-1 mt-2 text-sm text-white rounded-sm bg-darkBlue">{border}</button>
             )) : <span>Nil</span> 
           } */}
          {
             name && name.length > 0 ? name.map(border=>(
               <button key={border.cca3} onClick={()=>handleBorder(border.ccas3)}>
-                <span className="py-1 px-3 bg-darkBlue rounded-sm text-sm mt-2 text-white">{border.borders}</span>
+                <span className="px-3 py-1 mt-2 text-sm text-white rounded-sm bg-darkBlue">{border.borders}</span>
               </button>
             )): <span>Nil</span>
          } 
